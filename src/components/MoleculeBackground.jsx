@@ -1,27 +1,23 @@
-import {useEffect, useMemo, useState} from "react";
-import "particles.js";
-import Particles, {initParticlesEngine} from "@tsparticles/react";
-import {loadSlim} from "@tsparticles/slim"
+import { memo, useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
-export default function MoleculeBackground() {
+function MoleculeBackground() {
 
-    const [atons, setAtons] = useState(false)
+    const [init, setInit] = useState(false);
 
     useEffect(() => {
-        initParticlesEngine(async (engines) => {
-            await loadSlim(engines)
-        }).then(() => {setAtons(true);})
-
+        initParticlesEngine(async (engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setInit(true);
+        });
     }, []);
-
-    const particlesLoaded = (container) => {
-        console.log(container);
-    }
 
     const options = useMemo(() => ({
         background: {
             color: {
-                value: "transparent"
+                value: "#191621"
             }
         },
 
@@ -29,7 +25,7 @@ export default function MoleculeBackground() {
 
         particles: {
             number: {
-                value: 80,
+                value: 90,
                 density: {
                     enable: true,
                     area: 800
@@ -45,11 +41,11 @@ export default function MoleculeBackground() {
             },
 
             opacity: {
-                value: 0.5
+                value: 0.6
             },
 
             size: {
-                value: { min: 1, max: 3 }
+                value: { min: 1, max: 2 }
             },
 
             links: {
@@ -62,10 +58,8 @@ export default function MoleculeBackground() {
 
             move: {
                 enable: true,
-                speed: 2,
+                speed: 1.2,
                 direction: "none",
-                random: false,
-                straight: false,
                 outModes: {
                     default: "out"
                 }
@@ -76,12 +70,19 @@ export default function MoleculeBackground() {
             events: {
                 onHover: {
                     enable: true,
-                    mode: "repulse"
+                    mode: "grab"
                 },
                 resize: true
             },
 
             modes: {
+                grab: {
+                    distance: 180,
+                    links: {
+                        opacity: 1
+                    }
+                },
+
                 repulse: {
                     distance: 200,
                     duration: 0.4
@@ -90,10 +91,25 @@ export default function MoleculeBackground() {
         },
 
         detectRetina: true
+
     }), []);
 
+    if (!init) return null;
 
     return (
-        <Particles options={options} particlesLoaded={particlesLoaded}/>
+        <Particles
+            id="tsparticles"
+            options={options}
+            style={{
+                position: "relative",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 0
+            }}
+        />
     );
 }
+
+export default memo(MoleculeBackground);

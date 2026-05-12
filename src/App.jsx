@@ -1,11 +1,13 @@
 import './App.css'
-import MoleculeBackground from "./components/MoleculeBackground.jsx";
+import Introduction from "./components/Introduction.jsx";
+import LifeSection from "./components/LifeSection.jsx";
 
 function App() {
 
   return (
     <div className="app">
-      <MoleculeBackground/>
+        <Introduction />
+        <LifeSection/>
     </div>
   )
 }

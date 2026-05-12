@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-white-50: #d9ecff;
+}
+
+@layer utils {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -24,8 +37,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --font-code: "Fira Code", monospace;
+  --bg-color: #191621;
+  --particle-color: #88c8ff;
 
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+* {
+  margin:0;
+  padding:0;
 }
