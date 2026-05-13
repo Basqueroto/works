@@ -1,0 +1,32 @@
+.background {
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    position:relative;
+    z-index:5;
+    background-color: var(--bg-color);
+
+    justify-content: space-between;
+    align-content: center;
+}
+
+.leftText {
+    display:flex;
+    flex-direction: column;
+    gap: 45px;
+    align-content: center;
+    justify-content: center;
+    padding-left: 5%;
+}
+
+.textTitle {
+    color: var(--bg);
+    font-size: 80px;
+}
+
+.textSubTitle {
+    color: var(--bg);
+    font-size: 20px;
+}
