@@ -6,9 +6,42 @@
     position: relative;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 20px;
+    padding-right: 3%;
+}
+
+.languagueSelection {
+    color:#e6e6e6;
+    z-index:2;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    transition: all;
+}
+
+.button:hover{
+    color:#e6e6e6;
+}
+
+.active {
+    color:#e6e6e6;
+}
+
+.inactive {
+    color:#e6e6e64d;
+}
+
 .textBox{
     position:relative;
-    left:8%;
+    left:3%;
     top:45%;
     transform:translateY(-50%);
     z-index:2;
@@ -17,6 +50,13 @@
     color:#e6e6e6;
 
     pointer-events:none;
+
+    display:flex;
+    flex-direction: column;
+    gap: 45px;
+    align-content: center;
+    justify-content: center;
+    padding-left: 5%;
 }
 
 .word{
@@ -24,11 +64,27 @@
     margin-left:10px;
 }
 
-.cursor{
+.cursor {
     color:#88c8ff;
     margin-left:5px;
     animation: blink 1s infinite;
 }
+
+.textTitle {
+    color: var(--bg);
+    font-size: 80px;
+}
+
+.textSubTitle {
+    color: var(--bg);
+    font-size: 20px;
+}
+
+.btnDiv {
+    position: relative;
+    z-index: 7;
+}
+
 
 @keyframes blink{
     0%{opacity:1;}

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import MoleculeBackground from "../components/MoleculeBackground";
 import styles from "./Introduction.module.css";
+import GetInButton from "./GetInButton.jsx";
 
-export default function Introduction(){
+export default function Introduction({idiom, setIdiom}){
 
     const words = [
         "Journey",
@@ -47,15 +48,36 @@ export default function Introduction(){
 
     return(
         <div className={styles.container}>
+            <header className={styles.header}>
+                <div className={styles.languagueSelection}>
+                    <button
+                        onClick={() => setIdiom("PT")}
+                        className={`${styles.button} ${idiom === "PT" ? styles.active : styles.inactive}`}
+                    >
+                        PT
+                    </button>
+
+                    <p>|</p>
+
+                    <button
+                        onClick={() => setIdiom("EN")}
+                        className={`${styles.button} ${idiom === "EN" ? styles.active : styles.inactive}`}
+                    >
+                        EN
+                    </button>
+                </div>
+            </header>
 
             <MoleculeBackground/>
 
             <div className={styles.textBox}>
-                Code is
-                <span className={styles.word}>
-                    {" " + text}
-                </span>
-                <span className={styles.cursor}>|</span>
+                <p className={styles.textTitle}>Hello</p>
+                <p className={styles.textTitle}>I am Felipe</p>
+                <p className={styles.textTitle}>Fullstack developer</p>
+                <p className={styles.textSubTitle}>Passionate for the expericence</p>
+                <div className={styles.btnDiv}>
+                    <GetInButton/>
+                </div>
             </div>
 
         </div>
